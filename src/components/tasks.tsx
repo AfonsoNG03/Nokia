@@ -72,15 +72,17 @@ export default function Tasks() {
   
     return (
       <>
-        <div>
-            <h1>Tasks</h1>
+        <div className="row mb-3 mt-5">
+            <h1>Task List</h1>
+        </div>
+        <div className="row ms-3">
             <ul>
                 {tasks.map((task: Task) => (
                     <li key={task.id}>{task.text} - {task.completed ? 'Completed!' : 'To be done.'}</li>
                 ))}
             </ul>
-        </div>
+            </div>
       </>
-    )
+    );
   }
   
