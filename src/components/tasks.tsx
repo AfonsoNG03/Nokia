@@ -8,7 +8,6 @@ export default function Tasks() {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [error, setError] = useState();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const lastTaskIdRef = useRef<number>(-1);
 
 
     const abortControllerRef = useRef<AbortController | null>(null);
@@ -29,13 +28,7 @@ export default function Tasks() {
             }
 
             const fetchedTasks: Task[] = await response.json();
-
-            const newTasks = fetchedTasks.filter(task => task.id > lastTaskIdRef.current);
-
-            if (newTasks.length > 0) {
-                lastTaskIdRef.current = newTasks[newTasks.length - 1].id; // Update last seen task ID
-                setTasks(prevTasks => [...prevTasks, ...newTasks]);
-            }
+            setTasks(fetchedTasks);
 
         } catch (error: any) {
             if (error.name === 'AbortError') {
@@ -53,13 +46,6 @@ export default function Tasks() {
 
     useEffect(() => {
         fetchNewTasks();
-        const intervalId = setInterval(() => {
-            fetchNewTasks();
-        }, 60000);
-
-        return () => {
-            clearInterval(intervalId);
-        }
     }, []);
 
     if (isLoading) {

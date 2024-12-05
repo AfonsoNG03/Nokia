@@ -1,44 +1,50 @@
-.container-fluid {
-    font-family: Arial, sans-serif;
-}
-
-.row>* {
-    padding: 0;
-}
-
 .nav-row {
-    border-top: 2px solid #ddd;
+    border-top: 2px solid var(--border-color);
     position: absolute;
-    top: 8rem; /* Adjust this value to the element's start */
-    bottom: 0; /* Makes it stretch to the bottom of the screen */
-    width: 100%; /* Optional, ensure it spans the full width of its parent */
+    top: 8rem; 
+    bottom: 0; 
+    width: 100%;
 }
 
 @media (max-width: 575px) {
     .nav-row {
-        position: static; /* Restores normal document flow */
-        width: auto; /* Restores normal width */
+        position: static;
+        width: auto;
     }
 
     .sidebar-col {
-        border-right: none; /* Removes the vertical line */
+        border-right: none;
     }
 }
 
 
 .sidebar-col {
-    padding-top: 0.5rem;
-    border-right: 2px solid #ddd; /* Adds the vertical line */
-    height: 100%; /* Make the sidebar span the full height */
+    border-right: 2px solid var(--border-color);
+    height: 100%;
 }
 
 .nav-link {
-    border-bottom: 2px solid #ddd; /* Adds the horizontal line for main content */
-    width: 100%;
+    display: block;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 2px solid var(--border-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    cursor: pointer;
 }
 
 .col-sm-10 {
     padding: 1rem;
     height: 100%; /* Make main content fill the remaining space */
     overflow-y: auto; /* Add scrolling if the content overflows */
+}
+
+.list-group {
+    --bs-list-group-bg: var(--background-color);
+    --bs-list-group-border-color: var(--border-color);
 }
