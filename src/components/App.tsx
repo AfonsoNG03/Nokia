@@ -11,26 +11,26 @@ function App() {
 			<div className="row text-center my-5">
 				<h1>New App</h1>
 			</div>
-			<div className="row">
+			<div className="row nav-row">
 				{/* Sidebar */}
-				<nav className="col-sm-2">
-					<div className="sidebar-sticky">
+				<nav className="col-sm-2 sidebar-col">
+					<div className="sidebar-sticky ">
 						<ul className="nav flex-column">
-							<li className="nav-item">
-								<button
-									className="nav-link btn btn-link"
+							<li className="nav-item text-center">
+								<a
+									className="nav-link"
 									onClick={() => setShowTasks(false)}
 								>
 									Home
-								</button>
+								</a>
 							</li>
-							<li className="nav-item">
-								<button
-									className="nav-link btn btn-link"
+							<li className="nav-item text-center">
+								<a
+									className="nav-link"
 									onClick={() => setShowTasks(true)}
 								>
 									Tasks
-								</button>
+								</a>
 							</li>
 						</ul>
 					</div>

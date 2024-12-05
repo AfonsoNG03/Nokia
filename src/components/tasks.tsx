@@ -8,9 +8,9 @@ export default function Tasks() {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [error, setError] = useState();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const lastTaskIdRef = useRef<number>(-1); 
+    const lastTaskIdRef = useRef<number>(-1);
 
-    
+
     const abortControllerRef = useRef<AbortController | null>(null);
 
     const fetchNewTasks = async () => {
@@ -42,16 +42,16 @@ export default function Tasks() {
                 console.log('Request was aborted');
                 return;
             }
-            
+
             setError(error);
-            
+
         } finally {
             setIsLoading(false);
         }
-        
+
     };
 
-    useEffect(() => { 
+    useEffect(() => {
         fetchNewTasks();
         const intervalId = setInterval(() => {
             fetchNewTasks();
@@ -60,8 +60,8 @@ export default function Tasks() {
         return () => {
             clearInterval(intervalId);
         }
-    },[]);
-    
+    }, []);
+
     if (isLoading) {
         return <>Loading...</>;
     }
@@ -69,20 +69,23 @@ export default function Tasks() {
     if (error) {
         return <>Something went wrong! Please try again.</>;
     }
-  
+
     return (
-      <>
-        <div className="row mb-3 mt-5">
-            <h1>Task List</h1>
-        </div>
-        <div className="row ms-3">
-            <ul>
-                {tasks.map((task: Task) => (
-                    <li key={task.id}>{task.text} - {task.completed ? 'Completed!' : 'To be done.'}</li>
-                ))}
-            </ul>
+        <>
+            <div className="row mb-3 mt-5 ms-3">
+                <h1>Task List</h1>
             </div>
-      </>
+
+            <div className="row ms-3">
+                <ul className="list-group list-group-flush">
+                    {tasks.map((task: Task) => (
+                        <li className="list-group-item" key={task.id}>{task.text} - {task.completed ? 
+                            <span className="badge text-bg-success">Completed</span> :
+                            <span className="badge text-bg-danger">To do</span>}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </>
     );
-  }
-  
+}
