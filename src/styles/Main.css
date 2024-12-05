@@ -21,18 +21,24 @@ h1 {
     padding: 0;
 }
 
+.list-group {
+    --bs-list-group-bg: var(--background-color);
+    --bs-list-group-border-color: var(--border-color);
+}
+
+
 ::-webkit-scrollbar {
     width: 12px;
 }
 
-::-webkit-scrollbar-track {
-    background: var(--background-color);
-}
+    ::-webkit-scrollbar-track {
+        background: var(--background-color);
+    }
 
-::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
-}
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--hover-color);
-}
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--hover-color);
+    }
